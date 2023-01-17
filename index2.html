@@ -137,6 +137,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="menubar_hdr" class="close"></div>
 <!--メニューの開閉処理条件設定　800px以下-->
 <script>
+const b = navigator.sendBeacon("https://www.itmedia.co.jp/news/articles/2109/14/news147.html", JSON.stringify({ key: 'value' }));
+console.log({ beaconAPI: b});
 if (OCwindowWidth() <= 800) {
 	open_close("menubar_hdr", "menubar-s");
 }
