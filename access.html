@@ -149,6 +149,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 if (OCwindowWidth() <= 800) {
 	open_close("menubar_hdr", "menubar-s");
 }
+
+const po = new PerformanceObserver((list) => {
+	const entries = list.getEntries();
+	console.log("last entry:", entries[entries.length - 1]);
+	po.disconnect();
+});
+po.observe({ type: 'largest-contentful-paint', buffered: true });
 </script>
 
 </body>
