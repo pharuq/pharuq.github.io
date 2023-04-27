@@ -1,0 +1,16 @@
+	<html>
+	<button onclick="sendMessagesToFrame()">Start sending messages to IFrame</button>
+	<iframe id="iframe" src="iframe2.html"></iframe>
+
+	<script>
+	        var i = 0;
+	        function sendMessagesToFrame() {
+	            ++i;
+	            var message = Array(1000 * 1000 * 10).join("0123456789");
+	            window.parent.postMessage(message, "*");
+	            console.log(i);
+	            setTimeout(sendMessagesToFrame, 1000);
+	        }
+	     </script>
+
+	</html>

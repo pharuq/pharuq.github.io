@@ -1,0 +1,17 @@
+<html>
+IFrame
+
+<button onclick="sendMessagesToParent()">Start sending messages to parent</button>
+
+    <script>
+        var i = 0;
+        function sendMessagesToParent() {
+            ++i;
+            var message = Array(1000 * 1000 * 10).join("0123456789");
+            window.parent.postMessage(message, "*");
+            console.log(i);
+            setTimeout(sendMessagesToParent, 1000);
+        }
+    </script>
+
+</html>
