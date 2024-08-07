@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Precacher Integration Dual Test</title>
+    <link rel="stylesheet" href="http://localhost:8001/examples/precacher/assets/index/index.css">
+    <script>window.DUAL = true</script>
+    <script>window.DUAL_ERRORS = []</script>
+    <script>window.EXECUTIOIN_ORDERS = []</script>
+    <script>
+      window.EXECUTIOIN_ORDERS_SNAPSHOT_DCL = []
+      window.addEventListener('DOMContentLoaded', function() { window.EXECUTIOIN_ORDERS_SNAPSHOT_DCL = window.EXECUTIOIN_ORDERS.concat() })
+    </script>
+    <script src="/examples/precacher/assets/setup.js"></script>
+    <script src="http://localhost:8001/examples/precacher/assets/cors/jquery-3.6.0.slim.min.js" onload="window.EXECUTIOIN_ORDERS.push('jQuery')"></script>
+    <script>if (!window.$) {window.DUAL_ERRORS.push('Failed to load jQuery')}</script>
+    <script src="http://localhost:8001/examples/precacher/assets/cors/vue.js" onload="window.EXECUTIOIN_ORDERS.push('Vue')"></script>
+    <script>if (!window.Vue) {window.DUAL_ERRORS.push('Failed to load vue')}</script>
+    <script src="http://localhost:8001/examples/precacher/assets/cors/react.production.min.js" onload="window.EXECUTIOIN_ORDERS.push('React')"></script>
+    <script>if (!window.React) {window.DUAL_ERRORS.push('Failed to load React')}</script>
+    <script src="http://localhost:8001/examples/precacher/assets/cors/react-dom.production.min.js" onload="window.EXECUTIOIN_ORDERS.push('ReactDOM')"></script>
+    <script>if (!window.ReactDOM) {window.DUAL_ERRORS.push('Failed to load ReactDOM')}</script>
+    <script src="http://localhost:8001/examples/precacher/assets/index.js" onload="window.EXECUTIOIN_ORDERS.push('SITE_MESSAGE')"></script>
+    <script>if (!window.SITE_MESSAGE) {window.DUAL_ERRORS.push('Failed to load ReactDOM')}</script>
+    <script src="../../build/repro-sdk.min.js?token=t" onload="window.EXECUTIOIN_ORDERS.push('REPRO')"></script>
+    <script src="http://localhost:8001/examples/precacher/assets/load-test/a.js" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_A')"></script>
+    <script async src="/wait?ms=3000" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_B')"></script>
+    <script src="/wait?ms=100" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_AFTER_B_SYNC_DELAY100')"></script>
+    <script src="/wait?ms=0" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_AFTER_B_SYNC_DELAY0')"></script>
+    <script defer src="http://localhost:8001/examples/precacher/assets/load-test/c.js" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_C')"></script>
+    <script>
+      window.EXECUTIOIN_ORDERS.push('PRE_TEST_D')
+      document.write('\x3cscript src="http://localhost:8001/examples/precacher/assets/load-test/d.js" onload="window.EXECUTIOIN_ORDERS.push(\'LOAD_TEST_D\')">\x3c/script>')
+      window.EXECUTIOIN_ORDERS.push('BETWEEN_TEST_D_E')
+      document.write('\x3cscript src="http://localhost:8001/examples/precacher/assets/load-test/e.js" onload="window.EXECUTIOIN_ORDERS.push(\'LOAD_TEST_E\')">\x3c/script>')
+      window.EXECUTIOIN_ORDERS.push('BETWEEN_TEST_E_F')
+      document.write('\x3cscript defer src="http://localhost:8001/examples/precacher/assets/load-test/f.js" onload="window.EXECUTIOIN_ORDERS.push(\'LOAD_TEST_F\')">\x3c/script>')
+      window.EXECUTIOIN_ORDERS.push('POST_TEST_F')
+    </script>
+    <script defer src="http://localhost:8001/examples/precacher/assets/load-test/g.js" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_G')"></script>
+    <script type="module" src="http://localhost:8001/examples/precacher/assets/load-test/module.js" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_MODULE')"></script>
+    <script nomodule src="http://localhost:8001/examples/precacher/assets/load-test/no_module.js" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_NO_MODULE')"></script>
+    <script src="http://localhost:8001/examples/precacher/assets/load-test/h.js" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_H')"></script>
+    <script async src="/wait?ms=1000" onload="window.EXECUTIOIN_ORDERS.push('LOAD_TEST_I')"></script>
+  </head>
+  <body>
+    <script>
+      reproio('setup', 'token', {dangerously_bypass_browser_check: true});
+    </script>
+    <main>
+      <header>
+        <img src="http://localhost:8001/examples/precacher/assets/images/top.png" alt="This is Precacher" data-l="after-login" />
+      </header>
+      <section>
+        <section class="explain">
+          <div><a class="link what-page" href="what.html"><img src="http://localhost:8001/examples/precacher/assets/images/what.png" alt="What Repro Booster" /></a></div>
+          <div><a class="link whay-page" href="why.html"><img src="http://localhost:8001/examples/precacher/assets/images/why.png" alt="Why Repr Booster" /></a></div>
+        </section>
+      </section>
+      <section style="display: flex; flex-wrap: wrap">
+        <div><div></div><img src="http://localhost:8001/examples/precacher/assets/images/logged-in.png" alt="thumbnail" data-l="after-login" id="thumb-1"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail2.png" alt="thumbnail" data-l="after-login" id="thumb-2"/></div>
+        <div><div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail3.png" alt="thumbnail" data-l="after-login"/></div></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail4.png" alt="thumbnail" id="id-changed"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail5.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail6.png" alt="thumbnail" id="id-changed"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail7.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail8.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail9.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail10.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail11.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail12.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail13.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail14.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail15.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail16.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail17.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail18.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail19.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail20.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/http://localhost:8001/examples/precacher/assets/images/thumbnail20.png" alt="thumbnail"/></div>
+      </section>
+      <section style="display: flex; flex-wrap: wrap">
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail1.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail2.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail3.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail4.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail5.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail6.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail7.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail8.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail9.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail10.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail11.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail12.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail13.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail14.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail15.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail16.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail17.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail18.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail19.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/assets/images/thumbnail20.png" alt="thumbnail"/></div>
+        <div><img src="http://localhost:8001/examples/precacher/http://localhost:8001/examples/precacher/assets/images/thumbnail20.png" alt="thumbnail"/></div>
+      </section>
+      <section>
+        <section class="explain">
+          <div><a class="link_redirect what-redirect-page" href="/redirect_301?location=/examples/precacher/what.html"><img src="http://localhost:8001/examples/precacher/assets/images/what.png" alt="What Repro Booster" /></a></div>
+          <div><a class="link_redirect why-redirect-page" href="/redirect_302?location=/examples/precacher/why.html"><img src="http://localhost:8001/examples/precacher/assets/images/why.png" alt="Why Repr Booster" /></a></div>
+        </section>
+        <section class="explain">
+          <div><a class="link_redirect what-redirect-page" href="/redirect_307?location=/examples/precacher/what.html"><img src="http://localhost:8001/examples/precacher/assets/images/what.png" alt="What Repro Booster" /></a></div>
+          <div><a class="link_redirect why-redirect-page" href="/redirect_308?location=/examples/precacher/why.html"><img src="http://localhost:8001/examples/precacher/assets/images/why.png" alt="Why Repr Booster" /></a></div>
+        </section>
+      </section>
+      <section>
+        <section class="explain">
+          <div><a class="link_redirect what-redirect-page" href="/redirect_301?location=/examples/precacher/what.html"><img src="http://localhost:8001/examples/precacher/assets/images/what.png" alt="What Repro Booster" /></a></div>
+          <div><a class="link_redirect why-redirect-page" href="/redirect_302?location=/examples/precacher/why.html"><img src="http://localhost:8001/examples/precacher/assets/images/why.png" alt="Why Repr Booster" /></a></div>
+        </section>
+        <section class="explain">
+          <div><a class="link_redirect what-redirect-page" href="/redirect_307?location=/examples/precacher/what.html"><img src="http://localhost:8001/examples/precacher/assets/images/what.png" alt="What Repro Booster" /></a></div>
+          <div><a class="link_redirect why-redirect-page" href="/redirect_308?location=/examples/precacher/why.html"><img src="http://localhost:8001/examples/precacher/assets/images/why.png" alt="Why Repr Booster" /></a></div>
+        </section>
+      </section>
+      <section>
+        <form action="/post-test" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" value="test" name="test">
+          <input type="submit" value="送信" class="post-test" />
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
